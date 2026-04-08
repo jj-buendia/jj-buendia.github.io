@@ -106,7 +106,8 @@
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>25</span></li>
+                  <!-- <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>25</span></li> -->
+                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span id="age"></span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor's</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>buendiajj26@gmail.com</span></li>
                 </ul>
@@ -593,6 +594,29 @@
   <script src="assets/js/main.js">
 
   </script>
+
+  <script>
+  function calculateAge(birthday) {
+    const today = new Date();
+    const birthDate = new Date(birthday);
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const month = today.getMonth() - birthDate.getMonth();
+
+    // Adjust if birthday hasn't happened yet this year
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+
+    return age;
+  }
+
+  // Set your birthday here (YYYY-MM-DD format is safest)
+  const birthday = "1997-02-25";
+
+  // Display age
+  document.getElementById("age").textContent = calculateAge(birthday);
+</script>
 
 </body>
 
